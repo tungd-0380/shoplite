@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#fef3c7"/>
+  <circle cx="200" cy="170" r="80" fill="#b45309" opacity="0.85"/>
+  <text x="200" y="320" font-family="sans-serif" font-size="32" font-weight="700" fill="#b45309" text-anchor="middle">Balo</text>
+</svg>
