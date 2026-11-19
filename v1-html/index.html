@@ -17,21 +17,39 @@
         <button type="submit">Tìm</button>
       </form>
 
-      <a href="#" class="cart" aria-label="Giỏ hàng, 3 sản phẩm">
-        <svg class="cart-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
-          <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                d="M3 3h2l2.4 12.2a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.5L22 7H6"/>
-          <circle cx="10" cy="20" r="1.5" fill="currentColor"/>
-          <circle cx="18" cy="20" r="1.5" fill="currentColor"/>
-        </svg>
-        <span class="cart-badge">3</span>
-      </a>
+      <div class="header-actions">
+        <!-- Dark mode: checkbox + :has() trong CSS ghi đè biến màu, không cần JS -->
+        <label class="theme-toggle" title="Bật/tắt chế độ tối">
+          <input type="checkbox" id="theme-toggle" class="visually-hidden">
+          <span class="visually-hidden">Chế độ tối</span>
+          <svg class="theme-icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+          </svg>
+          <svg class="theme-icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="4"/>
+              <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+            </g>
+          </svg>
+        </label>
+
+        <a href="cart.html" class="cart" aria-label="Giỏ hàng, 4 sản phẩm">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+            <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  d="M3 3h2l2.4 12.2a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.5L22 7H6"/>
+            <circle cx="10" cy="20" r="1.5" fill="currentColor"/>
+            <circle cx="18" cy="20" r="1.5" fill="currentColor"/>
+          </svg>
+          <span class="cart-badge">4</span>
+        </a>
+      </div>
     </div>
   </header>
 
   <main class="container">
     <section class="products" aria-labelledby="products-title">
-      <h1 id="products-title">Sản phẩm</h1>
+      <h1 id="products-title" class="page-title">Sản phẩm</h1>
 
       <!-- Lưới sản phẩm: Grid auto-fill, tự đổi số cột không cần media query -->
       <div class="product-grid">

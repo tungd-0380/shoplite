@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ hàng — ShopLite</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="ShopLite - Trang chủ">Shop<span>Lite</span></a>
+
+      <form class="search" role="search" action="#" onsubmit="return false;">
+        <label for="search-input" class="visually-hidden">Tìm kiếm sản phẩm</label>
+        <input type="search" id="search-input" name="q" placeholder="Tìm kiếm sản phẩm...">
+        <button type="submit">Tìm</button>
+      </form>
+
+      <div class="header-actions">
+        <!-- Dark mode: checkbox + :has() trong CSS ghi đè biến màu, không cần JS -->
+        <label class="theme-toggle" title="Bật/tắt chế độ tối">
+          <input type="checkbox" id="theme-toggle" class="visually-hidden">
+          <span class="visually-hidden">Chế độ tối</span>
+          <svg class="theme-icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+          </svg>
+          <svg class="theme-icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="4"/>
+              <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+            </g>
+          </svg>
+        </label>
+
+        <a href="cart.html" class="cart" aria-label="Giỏ hàng, 4 sản phẩm" aria-current="page">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+            <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  d="M3 3h2l2.4 12.2a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.5L22 7H6"/>
+            <circle cx="10" cy="20" r="1.5" fill="currentColor"/>
+            <circle cx="18" cy="20" r="1.5" fill="currentColor"/>
+          </svg>
+          <span class="cart-badge">4</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container cart-page">
+    <h1 class="page-title">Giỏ hàng <span class="page-title-meta">(4 sản phẩm)</span></h1>
+
+    <!-- Grid 2 cột: danh sách trái, tổng kết phải; < 900px xếp dọc -->
+    <div class="cart-layout">
+      <section aria-label="Sản phẩm trong giỏ">
+        <ul class="cart-list">
+          <li class="cart-item">
+            <a href="product.html" class="cart-item-thumb">
+              <img src="images/tai-nghe.svg" alt="" width="80" height="80">
+            </a>
+            <div class="cart-item-info">
+              <h2 class="cart-item-name"><a href="product.html">Tai nghe không dây chống ồn chủ động, pin 30 giờ</a></h2>
+              <p class="cart-item-price">Đơn giá: 1.290.000₫</p>
+            </div>
+            <div class="cart-item-qty">
+              <label for="qty-1" class="visually-hidden">Số lượng Tai nghe không dây chống ồn chủ động, pin 30 giờ</label>
+              <input type="number" id="qty-1" class="qty-input" min="1" max="99" value="1">
+            </div>
+            <p class="cart-item-total" aria-label="Thành tiền">1.290.000₫</p>
+            <button type="button" class="btn-icon cart-item-remove" aria-label="Xóa Tai nghe không dây chống ồn chủ động, pin 30 giờ khỏi giỏ">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/>
+              </svg>
+            </button>
+          </li>
+          <li class="cart-item">
+            <a href="product.html" class="cart-item-thumb">
+              <img src="images/ao-thun.svg" alt="" width="80" height="80">
+            </a>
+            <div class="cart-item-info">
+              <h2 class="cart-item-name"><a href="product.html">Áo thun cotton basic</a></h2>
+              <p class="cart-item-price">Đơn giá: 199.000₫</p>
+            </div>
+            <div class="cart-item-qty">
+              <label for="qty-2" class="visually-hidden">Số lượng Áo thun cotton basic</label>
+              <input type="number" id="qty-2" class="qty-input" min="1" max="99" value="2">
+            </div>
+            <p class="cart-item-total" aria-label="Thành tiền">398.000₫</p>
+            <button type="button" class="btn-icon cart-item-remove" aria-label="Xóa Áo thun cotton basic khỏi giỏ">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/>
+              </svg>
+            </button>
+          </li>
+          <li class="cart-item">
+            <a href="product.html" class="cart-item-thumb">
+              <img src="images/binh-nuoc.svg" alt="" width="80" height="80">
+            </a>
+            <div class="cart-item-info">
+              <h2 class="cart-item-name"><a href="product.html">Bình nước giữ nhiệt 500ml</a></h2>
+              <p class="cart-item-price">Đơn giá: 249.000₫</p>
+            </div>
+            <div class="cart-item-qty">
+              <label for="qty-3" class="visually-hidden">Số lượng Bình nước giữ nhiệt 500ml</label>
+              <input type="number" id="qty-3" class="qty-input" min="1" max="99" value="1">
+            </div>
+            <p class="cart-item-total" aria-label="Thành tiền">249.000₫</p>
+            <button type="button" class="btn-icon cart-item-remove" aria-label="Xóa Bình nước giữ nhiệt 500ml khỏi giỏ">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/>
+              </svg>
+            </button>
+          </li>
+        </ul>
+        <a href="index.html" class="link-back">← Tiếp tục mua sắm</a>
+      </section>
+
+      <aside class="cart-summary" aria-labelledby="summary-title">
+        <h2 id="summary-title">Tóm tắt đơn hàng</h2>
+        <dl class="summary-list">
+          <div class="summary-row">
+            <dt>Tạm tính</dt>
+            <dd>1.937.000₫</dd>
+          </div>
+          <div class="summary-row">
+            <dt>Phí vận chuyển</dt>
+            <dd>30.000₫</dd>
+          </div>
+          <div class="summary-row summary-total">
+            <dt>Tổng cộng</dt>
+            <dd>1.967.000₫</dd>
+          </div>
+        </dl>
+        <button type="button" class="btn btn-primary btn-block checkout-btn">Thanh toán</button>
+        <p class="summary-note">Đã bao gồm VAT (nếu có)</p>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <section class="footer-info">
+        <h2>ShopLite</h2>
+        <address>
+          123 Đường ABC, Quận 1, TP. Hồ Chí Minh<br>
+          Hotline: <a href="tel:0123456789">0123 456 789</a><br>
+          Email: <a href="mailto:hello@shoplite.example">hello@shoplite.example</a>
+        </address>
+      </section>
+
+      <nav class="footer-links" aria-label="Liên kết chân trang">
+        <ul>
+          <li><a href="#">Giới thiệu</a></li>
+          <li><a href="#">Chính sách đổi trả</a></li>
+          <li><a href="#">Vận chuyển</a></li>
+          <li><a href="#">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="copyright">&copy; 2026 ShopLite. All rights reserved.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tailwind Card Lab — ShopLite</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Tailwind Play CDN: chỉ dùng để học/thử nghiệm, không dùng cho production -->
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <style>
+    /* Không dùng .container ở đây: Tailwind cũng có class .container riêng */
+    .lab { width: 100%; max-width: var(--container); margin: 0 auto; padding: var(--space-6) var(--gutter); }
+    .lab-heading { margin: var(--space-6) 0 var(--space-3); font-size: var(--text-lg); font-weight: 700; }
+    .lab p.lead { color: var(--color-muted); margin-bottom: var(--space-5); }
+    .compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 280px)); gap: var(--space-6); }
+    .compare figcaption { margin-bottom: var(--space-2); font-size: var(--text-sm); font-weight: 700; color: var(--color-muted); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); }
+    .map { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+    .map th, .map td { padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--color-border); text-align: left; vertical-align: top; }
+    .map th { background: var(--color-surface-2); }
+    .map tr:last-child td { border-bottom: none; }
+    .map code { font-family: ui-monospace, Menlo, monospace; font-size: 0.8125rem; }
+    .map td:first-child code { white-space: nowrap; }
+    .map th:nth-child(2) { width: 50%; }
+    .map td:first-child code { color: var(--color-primary); }
+    .map .group td { background: var(--color-surface-2); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <main class="lab">
+    <a href="index.html" class="link-back">← Về trang sản phẩm</a>
+    <h1 class="page-title" style="margin-top: var(--space-4)">Product card: Tailwind vs CSS thuần</h1>
+    <p class="lead">Cùng một card, hai cách viết. Bảng bên dưới đối chiếu từng utility class với thuộc tính CSS tương ứng (Tailwind v3.4).</p>
+
+    <div class="compare">
+      <figure>
+        <figcaption>Tailwind (utility classes)</figcaption>
+        <article class="flex flex-col gap-2 h-full p-3 bg-white border border-gray-200 rounded-xl shadow-sm transition hover:-translate-y-0.5 hover:border-orange-600 hover:shadow-lg">
+          <a href="product.html" class="block overflow-hidden rounded-lg bg-gray-100">
+            <img src="images/tai-nghe.svg" alt="Tai nghe không dây" class="w-full aspect-square object-cover">
+          </a>
+          <h2 class="text-base font-medium"><a href="product.html" class="hover:text-orange-600">Tai nghe không dây chống ồn chủ động, pin 30 giờ</a></h2>
+          <p class="font-bold text-orange-600">1.290.000₫</p>
+          <button type="button" class="mt-auto w-full px-4 py-2.5 rounded-lg bg-orange-600 text-white font-medium hover:bg-orange-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Thêm vào giỏ</button>
+        </article>
+      </figure>
+
+      <figure>
+        <figcaption>CSS thuần (style.css + biến)</figcaption>
+        <article class="product-card" style="height: 100%">
+          <a href="product.html" class="product-thumb">
+            <img src="images/tai-nghe.svg" alt="Tai nghe không dây" width="400" height="400">
+          </a>
+          <h2 class="product-name"><a href="product.html">Tai nghe không dây chống ồn chủ động, pin 30 giờ</a></h2>
+          <p class="product-price">1.290.000₫</p>
+          <button type="button" class="btn btn-primary product-add">Thêm vào giỏ</button>
+        </article>
+      </figure>
+    </div>
+
+    <h2 class="lab-heading">Bảng đối chiếu utility class → CSS</h2>
+    <div class="table-wrap">
+      <table class="map">
+        <thead>
+          <tr><th>Tailwind class</th><th>CSS tương ứng</th><th>Trong style.css</th></tr>
+        </thead>
+        <tbody>
+          <tr class="group"><td colspan="3">&lt;article&gt; — khung card</td></tr>
+          <tr><td><code>flex</code></td><td><code>display: flex</code></td><td><code>.product-card</code></td></tr>
+          <tr><td><code>flex-col</code></td><td><code>flex-direction: column</code></td><td><code>.product-card</code></td></tr>
+          <tr><td><code>gap-2</code></td><td><code>gap: 0.5rem</code> (8px)</td><td><code>var(--space-2)</code></td></tr>
+          <tr><td><code>h-full</code></td><td><code>height: 100%</code></td><td>— (trong grid card tự stretch)</td></tr>
+          <tr><td><code>p-3</code></td><td><code>padding: 0.75rem</code> (12px)</td><td><code>var(--space-3)</code></td></tr>
+          <tr><td><code>bg-white</code></td><td><code>background-color: #fff</code></td><td><code>var(--color-surface)</code></td></tr>
+          <tr><td><code>border</code></td><td><code>border-width: 1px</code></td><td><code>border: 1px solid …</code></td></tr>
+          <tr><td><code>border-gray-200</code></td><td><code>border-color: #e5e7eb</code></td><td><code>var(--color-border)</code></td></tr>
+          <tr><td><code>rounded-xl</code></td><td><code>border-radius: 0.75rem</code> (12px)</td><td><code>var(--radius-lg)</code></td></tr>
+          <tr><td><code>shadow-sm</code></td><td><code>box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05)</code></td><td><code>var(--shadow-sm)</code></td></tr>
+          <tr><td><code>transition</code></td><td><code>transition-property: color, background-color, border-color, …, box-shadow, transform…; transition-duration: 150ms</code></td><td><code>transition: … var(--transition)</code></td></tr>
+          <tr><td><code>hover:-translate-y-0.5</code></td><td><code>:hover { transform: translateY(-0.125rem) }</code> (-2px)</td><td><code>.product-card:hover</code></td></tr>
+          <tr><td><code>hover:border-orange-600</code></td><td><code>:hover { border-color: #ea580c }</code></td><td><code>var(--color-primary)</code></td></tr>
+          <tr><td><code>hover:shadow-lg</code></td><td><code>:hover { box-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1) }</code></td><td><code>var(--shadow-hover)</code></td></tr>
+
+          <tr class="group"><td colspan="3">&lt;a&gt; + &lt;img&gt; — ảnh</td></tr>
+          <tr><td><code>block</code></td><td><code>display: block</code></td><td><code>.product-thumb</code></td></tr>
+          <tr><td><code>overflow-hidden</code></td><td><code>overflow: hidden</code></td><td><code>.product-thumb</code></td></tr>
+          <tr><td><code>rounded-lg</code></td><td><code>border-radius: 0.5rem</code> (8px)</td><td><code>var(--radius)</code></td></tr>
+          <tr><td><code>bg-gray-100</code></td><td><code>background-color: #f3f4f6</code></td><td><code>var(--color-surface-2)</code></td></tr>
+          <tr><td><code>w-full</code></td><td><code>width: 100%</code></td><td><code>.product-thumb img</code></td></tr>
+          <tr><td><code>aspect-square</code></td><td><code>aspect-ratio: 1 / 1</code></td><td><code>.product-thumb img</code></td></tr>
+          <tr><td><code>object-cover</code></td><td><code>object-fit: cover</code></td><td><code>.product-thumb img</code></td></tr>
+
+          <tr class="group"><td colspan="3">&lt;h2&gt; + &lt;p&gt; — tên & giá</td></tr>
+          <tr><td><code>text-base</code></td><td><code>font-size: 1rem; line-height: 1.5rem</code></td><td><code>var(--text-base)</code></td></tr>
+          <tr><td><code>font-medium</code></td><td><code>font-weight: 500</code></td><td><code>.product-name</code></td></tr>
+          <tr><td><code>hover:text-orange-600</code></td><td><code>:hover { color: #ea580c }</code></td><td><code>.product-name a:hover</code></td></tr>
+          <tr><td><code>font-bold</code></td><td><code>font-weight: 700</code></td><td><code>.product-price</code></td></tr>
+          <tr><td><code>text-orange-600</code></td><td><code>color: #ea580c</code></td><td><code>var(--color-primary)</code></td></tr>
+
+          <tr class="group"><td colspan="3">&lt;button&gt; — Thêm vào giỏ</td></tr>
+          <tr><td><code>mt-auto</code></td><td><code>margin-top: auto</code></td><td><code>.product-add</code> — đẩy nút xuống đáy</td></tr>
+          <tr><td><code>w-full</code></td><td><code>width: 100%</code></td><td><code>.product-add</code></td></tr>
+          <tr><td><code>px-4</code></td><td><code>padding-left: 1rem; padding-right: 1rem</code></td><td><code>var(--space-4)</code></td></tr>
+          <tr><td><code>py-2.5</code></td><td><code>padding-top: 0.625rem; padding-bottom: 0.625rem</code> (10px)</td><td><code>.btn</code></td></tr>
+          <tr><td><code>rounded-lg</code></td><td><code>border-radius: 0.5rem</code></td><td><code>var(--radius)</code></td></tr>
+          <tr><td><code>bg-orange-600</code></td><td><code>background-color: #ea580c</code></td><td><code>var(--color-primary)</code></td></tr>
+          <tr><td><code>text-white</code></td><td><code>color: #fff</code></td><td><code>var(--color-on-primary)</code></td></tr>
+          <tr><td><code>font-medium</code></td><td><code>font-weight: 500</code></td><td><code>.btn</code></td></tr>
+          <tr><td><code>hover:bg-orange-700</code></td><td><code>:hover { background-color: #c2410c }</code></td><td><code>var(--color-primary-hover)</code></td></tr>
+          <tr><td><code>focus-visible:outline</code></td><td><code>:focus-visible { outline-style: solid }</code></td><td rowspan="4"><code>button:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px }</code></td></tr>
+          <tr><td><code>focus-visible:outline-2</code></td><td><code>:focus-visible { outline-width: 2px }</code></td></tr>
+          <tr><td><code>focus-visible:outline-offset-2</code></td><td><code>:focus-visible { outline-offset: 2px }</code></td></tr>
+          <tr><td><code>focus-visible:outline-blue-600</code></td><td><code>:focus-visible { outline-color: #2563eb }</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="lab-heading">Nhận xét</h2>
+    <ul class="detail-features">
+      <li>Tailwind: style nằm ngay trên HTML, không cần đặt tên class; nhưng markup dài và lặp lại nếu không tách component.</li>
+      <li>CSS thuần + biến: HTML gọn, đổi theme (dark mode) chỉ bằng ghi đè biến; Tailwind cần thêm tiền tố <code>dark:</code> cho từng class (card Tailwind ở trên không đổi theo dark mode).</li>
+      <li>Thang spacing của Tailwind (<code>1 = 0.25rem = 4px</code>) trùng với thang <code>--space-*</code> của ShopLite, nên chuyển đổi rất trực tiếp.</li>
+    </ul>
+  </main>
+</body>
+</html>
